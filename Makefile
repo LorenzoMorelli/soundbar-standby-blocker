@@ -9,9 +9,17 @@ build:
 	pyinstaller ./SoundbarBlocker.py --workpath ./build/tmp --distpath ./build --noconfirm --clean --windowed --paths ./venv/lib/python3.11/site-packages
 	rm -rf ./build/tmp
 
+build-windows:
+	python -m venv venv
+	.\venv\Scripts\activate.bat
+	pip3 install -U pyinstaller
+	pip3 install -r requirements.txt
+	pyinstaller ./SoundbarBlocker.py --workpath ./build/tmp --distpath ./build --noconfirm --clean --windowed --paths ./venv/lib/python3.11/site-packages
+	rm -rf ./build/tmp
+
 macos: build run-macos
 linux: build run-linux
-windows: build run-windows
+windows: build-windows run-windows
 
 run-macos:
 	./build/SoundbarBlocker.app/Contents/MacOS/SoundbarBlocker
