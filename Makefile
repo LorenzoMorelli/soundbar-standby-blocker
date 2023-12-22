@@ -11,12 +11,16 @@ build:
 
 macos: build run-macos
 linux: build run-linux
+windows: build run-windows
 
 run-macos:
 	./build/SoundbarBlocker.app/Contents/MacOS/SoundbarBlocker
 
 run-linux:
 	./build/SoundbarBlocker/SoundbarBlocker
+
+run-windows:
+	./build/SoundbarBlocker/SoundbarBlocker.exe
 
 clean:
 	rm -rf build
