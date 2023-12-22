@@ -41,9 +41,3 @@ coll = COLLECT(
     upx_exclude=[],
     name='SoundbarBlocker',
 )
-app = BUNDLE(
-    coll,
-    name='SoundbarBlocker.app',
-    icon=None,
-    bundle_identifier=None,
-)

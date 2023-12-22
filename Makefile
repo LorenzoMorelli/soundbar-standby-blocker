@@ -1,8 +1,6 @@
 # https://pyinstaller.org/en/stable/
 # https://medium.com/hackernoon/the-one-stop-guide-to-easy-cross-platform-python-freezing-part-1-c53e66556a0a
 
-macos: build run-macos
-
 build:
 	python3 -m venv venv
 	. venv/bin/activate && \
@@ -11,10 +9,16 @@ build:
 	pyinstaller ./SoundbarBlocker.py --workpath ./build/tmp --distpath ./build --noconfirm --clean --windowed --paths ./venv/lib/python3.11/site-packages
 	rm -rf ./build/tmp
 
+macos: build run-macos
+linux: build run-linux
+
 run-macos:
 	./build/SoundbarBlocker.app/Contents/MacOS/SoundbarBlocker
 
+run-linux:
+	./build/SoundbarBlocker/SoundbarBlocker
+
 clean:
 	rm -rf build
-	rm SoundbarBlocker.spec
+#	rm SoundbarBlocker.spec
 	rm -rf venv
